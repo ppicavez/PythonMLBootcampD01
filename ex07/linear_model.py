@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics import mean_squared_error
 from mylinearregression import MyLinearRegression as MyLR
+import matplotlib.pyplot as plt
 
 
 data = pd.read_csv("are_blue_pills_magics.csv")
@@ -13,6 +14,17 @@ linear_model1 = MyLR(np.array([[89.0], [-8]]))
 linear_model2 = MyLR(np.array([[89.0], [-6]]))
 Y_model1 = linear_model1.predict_(Xpill)
 Y_model2 = linear_model2.predict_(Xpill)
+
+
+
+plt.plot(Xpill, Yscore, 'bo', label="Score ")
+plt.plot(Xpill, Y_model1, '.', label="Estimated Score")
+plt.grid()
+plt.legend(loc='lower left')
+plt.title('Quantity of blue pil in microgram')
+plt.show()
+
+
 
 #print(linear_model1.mse_(Xpill, Yscore))
 # 57.60304285714282
